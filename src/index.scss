@@ -6,22 +6,57 @@
 
 body {
   background-color: black;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
   position: relative;
 }
 
-.target {
-  height: 30px;
-  width: 30px;
+.header {
+  height: 8vh;
+  width: 100vw;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
   position: absolute;
-  border-radius: 50px;
-  animation: falling linear;
+  top: 0px;
+  left: 0px;
+  backdrop-filter: blur(10px);
+  z-index: 100;
+
+  span {
+    width: fit-content;
+    padding: 20px 40px !important;
+    text-align: center;
+    padding: 10px;
+  }
 }
 
-@keyframes falling {
-  0% {
-    top: -50px;
-  }
-  100% {
-    top: 100vh;
+.targets {
+  width: 100%;
+  height: 100%;
+
+  .target-container {
+    position: absolute;
+    padding: 10px;
+    animation: falling linear;
+
+    .target {
+      border-radius: 50px;
+    }
+
+    @keyframes falling {
+      0% {
+        top: -50px;
+      }
+      100% {
+        top: 100vh;
+      }
+    }
   }
 }

@@ -4,10 +4,19 @@ import "./index.scss";
 
 const Target = (props) => (
   <div
+    className="target-container"
+    style={props.position}
     onClick={() => props.onClick(props.id)}
-    className="target"
-    style={props.style}
-  ></div>
+  >
+    <div className="target" style={props.style}></div>
+  </div>
+);
+
+const Header = (props) => (
+  <div className="header">
+    <span>{props.score}</span>
+    <span>Timeout</span>
+  </div>
 );
 
 const App = () => {
@@ -15,7 +24,7 @@ const App = () => {
   const [сomponents, setComponents] = useState([]);
   const [clickedTarget, setClickedTarget] = useState([]);
 
-  const createSize = () => Math.floor(Math.random() * 50) + "px";
+  const createSize = () => Math.floor(Math.random() * 50);
 
   const handleScore = (id) => {
     setScore((prevScore) => prevScore + 1);
@@ -29,13 +38,17 @@ const App = () => {
         ...prevComponents,
         <Target
           style={{
-            top: "-100px",
-            left: Math.floor(Math.random() * 100) + "%",
             backgroundColor:
               "#" + Math.floor(Math.random() * 16777215).toString(16),
+            height: size + "px",
+            width: size + "px",
+          }}
+          position={{
+            top: "-100px",
+            left: Math.floor(Math.random() * 100) + "%",
+            height: size + 20 + "px",
+            width: size + 20 + "px",
             animationDuration: Math.random() * 6 + "s",
-            height: size,
-            width: size,
           }}
           key={prevComponents.length + 1}
           onClick={handleScore}
@@ -54,12 +67,13 @@ const App = () => {
   }, []);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div className="container">
+      <Header score={score} />
+      <div className="targets">
         {сomponents.map((comp) =>
           clickedTarget.includes(comp.props.id) ? null : comp
         )}
-      </header>
+      </div>
     </div>
   );
 };
