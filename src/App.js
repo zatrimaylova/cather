@@ -8,7 +8,11 @@ const Target = (props) => (
     style={props.position}
     onClick={() => props.onClick(props.id)}
   >
-    <div className="target" style={props.style}></div>
+    <div
+      className="target"
+      style={props.style}
+      onClick={() => props.onClick(props.id)}
+    ></div>
   </div>
 );
 
