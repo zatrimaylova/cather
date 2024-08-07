@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: black;
+  position: relative;
+}
+
+.target {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  border-radius: 50px;
+  animation: falling linear;
+}
+
+@keyframes falling {
+  0% {
+    top: -50px;
+  }
+  100% {
+    top: 100vh;
+  }
+}
